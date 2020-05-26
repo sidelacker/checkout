@@ -9,25 +9,14 @@ import java.util.Map;
 
 public class CheckoutService {
 
-    private ShoppingBasket basket;
     private ProductInfoService productInfoService;
 
-
-    public CheckoutService(ShoppingBasket basket, ProductInfoService productInfoService) {
-        this.basket = basket;
+    public CheckoutService(ProductInfoService productInfoService) {
         this.productInfoService = productInfoService;
     }
 
-    public void addItem(String productId) {
-        basket.add(productId);
-    }
 
-    public void removeItem(String productId) {
-        basket.remove(productId);
-    }
-
-
-    public ShoppingBasketSummary getShoppingBasketSummary() throws ProductNotFoundException {
+    public ShoppingBasketSummary getShoppingBasketSummary(ShoppingBasket basket) throws ProductNotFoundException {
 
         String itemsDescription = "";
         BigDecimal price = BigDecimal.ZERO;
