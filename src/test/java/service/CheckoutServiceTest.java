@@ -18,12 +18,12 @@ public class CheckoutServiceTest {
     public static final String PRODUCT_ID_2 = "23456";
     public static final String PRODUCT_ID_3 = "34567";
     public static final String PRODUCT_ID_UNKNOWN = "45678";
-    
+
     private CheckoutService subject;
     private ProductInfoService productInfoService;
     private ShoppingBasket userBasket;
 
-    
+
     @Before
     public void setup() {
         Map<String, ProductInfo> productInfoMap = new HashMap<>();
@@ -33,7 +33,7 @@ public class CheckoutServiceTest {
 
         productInfoService = new DefaultProductInforService(productInfoMap);
         subject = new CheckoutService(productInfoService);
-        
+
         userBasket = new ShoppingBasket();
     }
 
@@ -228,8 +228,7 @@ public class CheckoutServiceTest {
         assertEquals(BigDecimal.valueOf(-30), result.getTotal());
     }
 
-
-    @Deprecated
+    
     @Test
     public void price_is_negative() throws ProductNotFoundException {
 
