@@ -26,8 +26,8 @@ public class CheckoutServiceTest {
     public void setup() {
         Map<String, ProductInfo> inventoryMap = new HashMap<>();
         inventoryMap.put(PRODUCT_ID_1, new ProductInfo(PRODUCT_ID_1, "Skateboard", BigDecimal.valueOf(10), BigDecimal.valueOf(3)));
-        inventoryMap.put(PRODUCT_ID_2, new ProductInfo(PRODUCT_ID_2, "Knee Pads", BigDecimal.valueOf(10), BigDecimal.valueOf(3)));
-        inventoryMap.put(PRODUCT_ID_3, new ProductInfo(PRODUCT_ID_3, "Helmet", BigDecimal.valueOf(10), BigDecimal.valueOf(3)));
+        inventoryMap.put(PRODUCT_ID_2, new ProductInfo(PRODUCT_ID_2, "Knee Pads", BigDecimal.valueOf(15), BigDecimal.valueOf(5)));
+        inventoryMap.put(PRODUCT_ID_3, new ProductInfo(PRODUCT_ID_3, "Helmet", BigDecimal.valueOf(20), BigDecimal.valueOf(7)));
 
         productInfoService = new DefaultProductInforService(inventoryMap);
         subject = new CheckoutService(new ShoppingBasket(), productInfoService);
@@ -61,9 +61,9 @@ public class CheckoutServiceTest {
         subject.addItem(PRODUCT_ID_2);
 
         assertEquals("Skateboard(1), Knee Pads(1)", subject.getShoppingBasketSummary().getItemsDescription());
-        assertEquals(BigDecimal.valueOf(20), subject.getShoppingBasketSummary().getPrice());
-        assertEquals(BigDecimal.valueOf(6), subject.getShoppingBasketSummary().getDiscount());
-        assertEquals(BigDecimal.valueOf(14), subject.getShoppingBasketSummary().getTotal());
+        assertEquals(BigDecimal.valueOf(25), subject.getShoppingBasketSummary().getPrice());
+        assertEquals(BigDecimal.valueOf(8), subject.getShoppingBasketSummary().getDiscount());
+        assertEquals(BigDecimal.valueOf(17), subject.getShoppingBasketSummary().getTotal());
     }
 
     @Test
@@ -73,9 +73,9 @@ public class CheckoutServiceTest {
         subject.addItem(PRODUCT_ID_3);
 
         assertEquals("Skateboard(1), Knee Pads(1), Helmet(1)", subject.getShoppingBasketSummary().getItemsDescription());
-        assertEquals(BigDecimal.valueOf(30), subject.getShoppingBasketSummary().getPrice());
-        assertEquals(BigDecimal.valueOf(9), subject.getShoppingBasketSummary().getDiscount());
-        assertEquals(BigDecimal.valueOf(21), subject.getShoppingBasketSummary().getTotal());
+        assertEquals(BigDecimal.valueOf(45), subject.getShoppingBasketSummary().getPrice());
+        assertEquals(BigDecimal.valueOf(15), subject.getShoppingBasketSummary().getDiscount());
+        assertEquals(BigDecimal.valueOf(30), subject.getShoppingBasketSummary().getTotal());
     }
 
     @Test
@@ -101,9 +101,9 @@ public class CheckoutServiceTest {
         subject.addItem(PRODUCT_ID_3);
 
         assertEquals("Skateboard(1), Knee Pads(2), Helmet(3)", subject.getShoppingBasketSummary().getItemsDescription());
-        assertEquals(BigDecimal.valueOf(60), subject.getShoppingBasketSummary().getPrice());
-        assertEquals(BigDecimal.valueOf(18), subject.getShoppingBasketSummary().getDiscount());
-        assertEquals(BigDecimal.valueOf(42), subject.getShoppingBasketSummary().getTotal());
+        assertEquals(BigDecimal.valueOf(100), subject.getShoppingBasketSummary().getPrice());
+        assertEquals(BigDecimal.valueOf(34), subject.getShoppingBasketSummary().getDiscount());
+        assertEquals(BigDecimal.valueOf(66), subject.getShoppingBasketSummary().getTotal());
     }
 
 
@@ -116,9 +116,9 @@ public class CheckoutServiceTest {
         subject.removeItem(PRODUCT_ID_2);
 
         assertEquals("Skateboard(1), Helmet(1)", subject.getShoppingBasketSummary().getItemsDescription());
-        assertEquals(BigDecimal.valueOf(20), subject.getShoppingBasketSummary().getPrice());
-        assertEquals(BigDecimal.valueOf(6), subject.getShoppingBasketSummary().getDiscount());
-        assertEquals(BigDecimal.valueOf(14), subject.getShoppingBasketSummary().getTotal());
+        assertEquals(BigDecimal.valueOf(30), subject.getShoppingBasketSummary().getPrice());
+        assertEquals(BigDecimal.valueOf(10), subject.getShoppingBasketSummary().getDiscount());
+        assertEquals(BigDecimal.valueOf(20), subject.getShoppingBasketSummary().getTotal());
     }
 
     @Test
@@ -135,9 +135,9 @@ public class CheckoutServiceTest {
         subject.removeItem(PRODUCT_ID_3);
 
         assertEquals("Skateboard(1), Knee Pads(1), Helmet(1)", subject.getShoppingBasketSummary().getItemsDescription());
-        assertEquals(BigDecimal.valueOf(30), subject.getShoppingBasketSummary().getPrice());
-        assertEquals(BigDecimal.valueOf(9), subject.getShoppingBasketSummary().getDiscount());
-        assertEquals(BigDecimal.valueOf(21), subject.getShoppingBasketSummary().getTotal());
+        assertEquals(BigDecimal.valueOf(45), subject.getShoppingBasketSummary().getPrice());
+        assertEquals(BigDecimal.valueOf(15), subject.getShoppingBasketSummary().getDiscount());
+        assertEquals(BigDecimal.valueOf(30), subject.getShoppingBasketSummary().getTotal());
     }
 
 
